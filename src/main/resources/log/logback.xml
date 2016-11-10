@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<configuration scan="true" scanPeriod="30 minutes" debug="false">
+	<jmxConfigurator />
+	<!-- 日志存储根路径 -->
+	<property name="log.dir.root" value="C:/syslog" />
+	
+	<!-- 控制台输出日志 -->
+	<appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+		<layout class="ch.qos.logback.classic.PatternLayout">
+		    <fileNamePattern>${log.dir.root}/debug/sys-debug-%d{yyyy-MM-dd}.log</fileNamePattern>
+			<pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{36} -
+				%msg%n</pattern>
+		</layout>
+	</appender>
+	<!-- 出错日志 appender  -->
+    <appender name="ERROR" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <!-- 按天回滚 daily -->
+            <fileNamePattern>${log.dir.root}/error/sys-error-%d{yyyy-MM-dd}.log</fileNamePattern>
+            <!-- 日志最大的历史 60天 -->
+            <maxHistory>60</maxHistory>
+        </rollingPolicy>
+        <encoder>
+            <Pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{36} -
+				%msg%n</Pattern>
+				<charset>UTF-8</charset>
+        </encoder>
+    </appender>
+    
+       <!-- 访问日志 appender  -->
+    <appender name="ACCESS" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <!-- 按天回滚 daily -->
+            <fileNamePattern>${log.dir.root}/access/sys-access-%d{yyyy-MM-dd}.log</fileNamePattern>
+            <!-- 日志最大的历史 60天 -->
+            <maxHistory>60</maxHistory>
+        </rollingPolicy>
+        <encoder>
+            <Pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{36} -
+				%msg%n</Pattern>
+				<charset>UTF-8</charset>
+        </encoder>
+    </appender>
+    
+	<!-- 文件输出日志 (文件大小策略进行文件输出，超过指定大小对文件备份) -->
+	<appender name="FILE"
+		class="ch.qos.logback.core.rolling.RollingFileAppender">
+		<File>demo.log</File>
+		<rollingPolicy class="ch.qos.logback.core.rolling.FixedWindowRollingPolicy">
+			<FileNamePattern>xxxx.log.%i.bak</FileNamePattern>
+			<MinIndex>1</MinIndex>
+			<MaxIndex>12</MaxIndex>
+		</rollingPolicy>
+		<triggeringPolicy
+			class="ch.qos.logback.core.rolling.SizeBasedTriggeringPolicy">
+			<MaxFileSize>100MB</MaxFileSize>
+		</triggeringPolicy>
+		<layout class="ch.qos.logback.classic.PatternLayout">
+			<Pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{36} -
+				%msg%n</Pattern>
+		</layout>
+	</appender>
+	<!--这里指定logger name 是为jmx设置日志级别做铺垫 -->
+	<logger name="com.wshsoft">
+		<level value="INFO" />
+		<appender-ref ref="STDOUT" />
+		<appender-ref ref="FILE" />
+	</logger>
+	<!-- 打印级别，大小写无关：TRACE, DEBUG, INFO, WARN, ERROR, ALL 和  OFF 默认是DEBUG -->
+	<root level="ERROR">
+		<appender-ref ref="Console" />
+		<appender-ref ref="File" />
+	</root>
+	<logger name="org.springframework" level="WARN" />
+	<logger name="net.sf.ehcache" level="WARN" />
+	<logger name="org.mybatis" level="WARN" />
+	
+	<root level="INFO">
+		<appender-ref ref="STDOUT" />
+	</root>
+	
+	<!--错误日志-->
+    <logger name="sys-error" level="info">
+        <appender-ref ref="ERROR"/>
+        <appender-ref ref="FILE" />
+    </logger>
+    
+    <!--访问日志-->
+    <logger name="sys-access" level="info">
+        <appender-ref ref="ACCESS"/>
+    </logger>
+</configuration>
