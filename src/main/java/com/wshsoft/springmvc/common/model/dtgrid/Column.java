@@ -1,4 +1,4 @@
-package com.wshsoft.springmvc.common.model;
+package com.wshsoft.springmvc.common.model.dtgrid;
 
 import java.util.Map;
 

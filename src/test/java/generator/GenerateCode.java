@@ -19,18 +19,18 @@ import java.util.Properties;
  * Describe: 代码生成器配置
  */
 public class GenerateCode { 
- 
+  
     /* 生成代码包名 */
     private static final String PACKAGE_NAME = "com.wshsoft.springmvc";
     /* 生成代码模块名 */
-    private static final String MODEL_NAME = "menu";
+    private static final String MODEL_NAME = "grid";
 
     public static void main(String[] args) {
 
         /* 获取 JDBC 配置文件 */
         Properties props = getProperties();
 
-        /* 配置 Mybatis-Plus 代码生成器 */
+        /* 配置 Mybatis-Plus 代码生成器 */ 
         ConfigGenerator cg = new ConfigGenerator();
 
         /* Mysql 数据库相关配置 */
@@ -39,7 +39,7 @@ public class GenerateCode {
         cg.setDbUser(props.getProperty("jdbc_username"));
         cg.setDbPassword(props.getProperty("jdbc_password"));
 
-        /* 设置数据库前缀（例如`mp_user`生成实体类，false 为 MpUser.java , true 为 User.java）*/
+        /* 设置数据库前缀（例如`mp_user`生成实体类，false 为 MpUser.java , true 为 TbUser.java）*/
         cg.setDbPrefix(true);
 
          /*
@@ -80,7 +80,7 @@ public class GenerateCode {
      */
     private static Properties getProperties() {
         // 读取配置文件
-        Resource resource = new ClassPathResource("/config.properties");
+        Resource resource = new ClassPathResource("properties/jdbc.properties");
         Properties props = new Properties();
         try {
             props = PropertiesLoaderUtils.loadProperties(resource);

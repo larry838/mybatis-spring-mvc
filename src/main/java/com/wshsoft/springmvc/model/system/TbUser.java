@@ -13,7 +13,7 @@ import com.wshsoft.mybatis.annotations.TableName;
  *
  */
 @TableName("sys_user")
-public class User implements Serializable {
+public class TbUser implements Serializable {
 
 	@TableField(exist = false)
 	private static final long serialVersionUID = 1L;
