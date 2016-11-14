@@ -118,7 +118,7 @@
 				<script type="text/javascript">
 					var gridColumns_2_1_2 = [
 							{
-								id : 'user_code',
+								id : 'userCode',
 								title : '用户编号',
 								type : 'string',
 								columnClass : 'text-center',
@@ -127,7 +127,7 @@
 								fastQueryType : 'eq'
 							},
 							{
-								id : 'user_name',
+								id : 'userName',
 								title : '用户名称',
 								type : 'string',
 								columnClass : 'text-center',
