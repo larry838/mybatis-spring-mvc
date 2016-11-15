@@ -1,4 +1,10 @@
-<%@ page contentType="text/html;charset=UTF-8" language="java"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<%
+  String path = request.getContextPath();
+  String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path;
+%>
 <!DOCTYPE html>
 <head>
 <title>DLShouWen Grid - 示例</title>
@@ -14,6 +20,7 @@
 <meta name="renderer" content="webkit|ie-comp|ie-stand">
 <!-- favicon -->
 <link rel="icon" href="resources/images/favicon.ico" type="image/x-icon" />
+<c:set var="ctx" value="${pageContext.request.contextPath }" />
 <!-- jQuery -->
 <script type="text/javascript"
 	src="resources/jquery/jquery-2.2.3.min.js"></script>
@@ -117,8 +124,17 @@
 				<div id="2.1.2" class="sub-title">响应式表格</div>
 				<script type="text/javascript">
 					var gridColumns_2_1_2 = [
+												{
+													id : 'userId',
+													title : '用户id',
+													type : 'long',
+													columnClass : 'text-center',
+													headerStyle : 'background:#00a2ca;color:white;',
+													fastQuery : true,
+													fastQueryType : 'eq'
+												},
 							{
-								id : 'user_code',
+								id : 'userCode',
 								title : '用户编号',
 								type : 'string',
 								columnClass : 'text-center',
@@ -127,7 +143,7 @@
 								fastQueryType : 'eq'
 							},
 							{
-								id : 'user_name',
+								id : 'userName',
 								title : '用户名称',
 								type : 'string',
 								columnClass : 'text-center',
@@ -195,18 +211,23 @@
 								resolution : function(value, record, column,
 										grid, dataNo, columnNo) {
 									var content = '';
-									content += '<button class="btn btn-xs btn-default" onclick="alert(\'编辑用户：'
-											+ record.user_name
+									/*content += '<button class="btn btn-xs btn-default" onclick="alert(\'编辑用户：'
+											+ record.userName
 											+ '\');"><i class="fa fa-edit"></i>  编辑</button>';
+											*/					
+										
+								   content += '<button class="btn btn-xs btn-default" onclick="window.open(\'<%=basePath%>/editUser.htm?id='+ record.userId+'\');"><i class="fa fa-edit"></i>  编辑</button>';
+									return content;										
+										
 									content += '  ';
 									content += '<button class="btn btn-xs btn-danger" onclick="alert(\'删除用户：'
-											+ record.user_name
+											+ record.userName
 											+ '\');"><i class="fa fa-trash-o"></i>删除</button>';
 									return content;
 								}
 							},
 							{
-								id : 'time_stamp_s',
+								id : 'timeStampS',
 								title : '秒级时间戳',
 								type : 'date',
 								format : 'yyyy-MM-dd hh:mm:ss',
@@ -215,7 +236,7 @@
 								headerStyle : 'background:#00a2ca;color:white;',
 								hideType : 'lg|md|sm|xs'
 							}, {
-								id : 'time_stamp_ms',
+								id : 'timeStampMs',
 								title : '毫秒级时间戳',
 								type : 'date',
 								format : 'yyyy-MM-dd hh:mm:ss S',
@@ -223,7 +244,7 @@
 								columnClass : 'text-center',
 								hideType : 'lg|md|sm|xs'
 							}, {
-								id : 'string_date',
+								id : 'stringDate',
 								title : '日期格式字符串',
 								type : 'date',
 								format : 'yyyy-MM-dd',
@@ -232,7 +253,7 @@
 								columnClass : 'text-center',
 								hideType : 'lg|md|sm|xs'
 							}, {
-								id : 'string_time',
+								id : 'stringTime',
 								title : '时间格式字符串',
 								type : 'date',
 								format : 'yyyy-MM-dd hh:mm:ss',
@@ -244,9 +265,9 @@
 					var gridOption_2_1_2 = {
 						check : true,
 						lang : 'zh-cn',
-						ajaxLoad : false,
-						datas : datas,
-						//loadURL : '/grid/demo/datas/ajax',
+						ajaxLoad : true,
+						//datas : datas,
+						loadURL : 'datas/ajax',
 						exportFileName : '用户列表',
 						columns : gridColumns_2_1_2,
 						gridContainer : 'gridContainer_2_1_2',

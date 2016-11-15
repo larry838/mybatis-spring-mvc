@@ -1,6 +1,7 @@
 package com.wshsoft.springmvc.controller;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -9,6 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -29,6 +31,12 @@ public class GridDemoController {
 	@Autowired 
 	IUserService iUserService;
 	
+	@RequestMapping("gridList")
+	public String listUI(Model model, HttpServletRequest request) {
+		
+	  return "/grid/gridList";
+	}
+	
 	/**
 	 * ajax分页动态加载模式
 	 * @param gridPager Pager对象
@@ -44,10 +52,10 @@ public class GridDemoController {
 		Pager pager = JSON.parseObject(gridPager, Pager.class);
 		// 判断是否包含自定义参数
 		parameters = pager.getParameters();
-		if (parameters.size() < 0) {
+		/*if (parameters.size() < 0) {
 			parameters.put("name", null);
-		}
-
+		}*/
+        
 		Page<User> page = new Page<User>(pager.getNowPage(), pager.getPageSize());
 		
 		EntityWrapper<User> ew = new EntityWrapper<User>(new User());
@@ -60,8 +68,42 @@ public class GridDemoController {
 		parameters.put("pageSize", pager.getPageSize());
 		parameters.put("pageCount", page.getPages());
 		parameters.put("recordCount", page.getTotal());
-		parameters.put("startRecord", 100);
 		return parameters;
-		//pager.setExhibitDatas(list);
+	}
+	
+	
+	@RequestMapping("/editUser")
+	public String edit( Model model, Long id ) {
+		if ( id != null ) {
+			model.addAttribute("user", iUserService.selectById(id));
+		}
+		return "/grid/edit";
+	}
+	
+	@RequestMapping("edit.html")
+	@ResponseBody
+	public Object update(User user)
+	{
+		Map<String, Object> map = new HashMap<String, Object>();
+		try
+		{
+	
+			boolean result = iUserService.updateById(user);
+			if(result)
+			{
+				map.put("success", Boolean.TRUE);
+				map.put("data", null);
+				map.put("message", "编辑成功");
+			}else
+			{
+				map.put("success", Boolean.FALSE);
+				map.put("data", null);
+				map.put("message", "编辑失败");
+			}
+		}catch(Exception e)
+		{
+			//throw new AjaxException(e);
+		}
+		return map;
 	}
 }
