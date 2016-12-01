@@ -231,7 +231,7 @@
 								title : '秒级时间戳',
 								type : 'date',
 								format : 'yyyy-MM-dd hh:mm:ss',
-								otype : 'time_stamp_s',
+								otype : 'timeStampS',
 								columnClass : 'text-center',
 								headerStyle : 'background:#00a2ca;color:white;',
 								hideType : 'lg|md|sm|xs'
@@ -240,7 +240,7 @@
 								title : '毫秒级时间戳',
 								type : 'date',
 								format : 'yyyy-MM-dd hh:mm:ss S',
-								otype : 'time_stamp_ms',
+								otype : 'timeStampMs',
 								columnClass : 'text-center',
 								hideType : 'lg|md|sm|xs'
 							}, {

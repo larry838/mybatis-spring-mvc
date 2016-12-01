@@ -5,7 +5,7 @@ import org.springframework.stereotype.Service;
 import com.wshsoft.springmvc.mapper.grid.UserMapper;
 import com.wshsoft.springmvc.model.grid.User;
 import com.wshsoft.springmvc.service.grid.IUserService;
-import com.wshsoft.framework.service.impl.SuperServiceImpl;
+import com.wshsoft.framework.service.impl.ServiceImpl;
 
 /**
  *
@@ -13,7 +13,7 @@ import com.wshsoft.framework.service.impl.SuperServiceImpl;
  *
  */
 @Service
-public class UserServiceImpl extends SuperServiceImpl<UserMapper, User> implements IUserService {
+public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements IUserService {
 
 
 }

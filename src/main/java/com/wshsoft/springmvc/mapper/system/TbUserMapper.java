@@ -1,7 +1,7 @@
 package com.wshsoft.springmvc.mapper.system;
 
 import com.wshsoft.springmvc.model.system.TbUser;
-import com.wshsoft.mybatis.mapper.AutoMapper;
+import com.wshsoft.mybatis.mapper.BaseMapper;
 
 /**
  * Author: carry xie
@@ -10,7 +10,7 @@ import com.wshsoft.mybatis.mapper.AutoMapper;
  * TbUser 表数据库控制层接口
  *
  */
-public interface TbUserMapper extends AutoMapper<TbUser> {
+public interface TbUserMapper extends BaseMapper<TbUser> {
 
  
 }

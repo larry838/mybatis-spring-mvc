@@ -5,7 +5,7 @@ import org.springframework.stereotype.Service;
 import com.wshsoft.springmvc.mapper.menu.MenuMapper;
 import com.wshsoft.springmvc.model.menu.Menu;
 import com.wshsoft.springmvc.service.menu.IMenuService;
-import com.wshsoft.framework.service.impl.SuperServiceImpl;
+import com.wshsoft.framework.service.impl.ServiceImpl;
 
 /**
  *
@@ -13,7 +13,7 @@ import com.wshsoft.framework.service.impl.SuperServiceImpl;
  *
  */
 @Service
-public class MenuServiceImpl extends SuperServiceImpl<MenuMapper, Menu> implements IMenuService {
+public class MenuServiceImpl extends ServiceImpl<MenuMapper, Menu> implements IMenuService {
 
 
 }

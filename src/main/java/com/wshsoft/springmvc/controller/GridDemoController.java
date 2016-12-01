@@ -17,7 +17,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.alibaba.fastjson.JSON;
 import com.wshsoft.mybatis.mapper.EntityWrapper;
-import com.wshsoft.mybatis.plugins.pagination.Page;
+import com.wshsoft.mybatis.plugins.Page;
 import com.wshsoft.springmvc.common.model.dtgrid.Pager;
 import com.wshsoft.springmvc.model.grid.User;
 import com.wshsoft.springmvc.service.grid.IUserService;
@@ -25,7 +25,7 @@ import com.wshsoft.springmvc.service.grid.IUserService;
 
 
 @Controller
-public class GridDemoController {
+public class GridDemoController extends BaseController{
 	
 
 	@Autowired 
@@ -84,26 +84,11 @@ public class GridDemoController {
 	@ResponseBody
 	public Object update(User user)
 	{
-		Map<String, Object> map = new HashMap<String, Object>();
-		try
-		{
-	
-			boolean result = iUserService.updateById(user);
-			if(result)
-			{
-				map.put("success", Boolean.TRUE);
-				map.put("data", null);
-				map.put("message", "编辑成功");
-			}else
-			{
-				map.put("success", Boolean.FALSE);
-				map.put("data", null);
-				map.put("message", "编辑失败");
-			}
-		}catch(Exception e)
-		{
-			//throw new AjaxException(e);
-		}
-		return map;
+		
+        if (user.getUserId() == null) {
+            return iUserService.insert(user) ? renderSuccess("添加成功") : renderError("添加失败");
+        } else {
+            return iUserService.updateById(user) ? renderSuccess("修改成功") : renderError("修改失败");
+        }
 	}
 }

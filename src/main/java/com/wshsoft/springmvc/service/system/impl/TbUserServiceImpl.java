@@ -5,7 +5,7 @@ import org.springframework.stereotype.Service;
 import com.wshsoft.springmvc.mapper.system.TbUserMapper;
 import com.wshsoft.springmvc.model.system.TbUser;
 import com.wshsoft.springmvc.service.system.ITbUserService;
-import com.wshsoft.framework.service.impl.SuperServiceImpl;
+import com.wshsoft.framework.service.impl.ServiceImpl;
 
 /**
  *
@@ -13,7 +13,7 @@ import com.wshsoft.framework.service.impl.SuperServiceImpl;
  *
  */
 @Service
-public class TbUserServiceImpl extends SuperServiceImpl<TbUserMapper, TbUser> implements ITbUserService {
+public class TbUserServiceImpl extends ServiceImpl<TbUserMapper, TbUser> implements ITbUserService {
 
  
 }

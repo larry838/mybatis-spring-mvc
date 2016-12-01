@@ -47,7 +47,7 @@ public class TbUserController extends BaseController {
         if (user.getId() == null) {
             return iTbUserService.insert(user) ? renderSuccess("添加成功") : renderError("添加失败");
         } else {
-            return iTbUserService.updateSelectiveById(user) ? renderSuccess("修改成功") : renderError("修改失败");
+            return iTbUserService.updateById(user) ? renderSuccess("修改成功") : renderError("修改失败");
         }
     }
 

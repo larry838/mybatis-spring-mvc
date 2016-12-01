@@ -12,7 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
 import com.alibaba.fastjson.serializer.SerializerFeature;
-import com.wshsoft.mybatis.plugins.pagination.Page;
+import com.wshsoft.mybatis.plugins.Page;
 import com.wshsoft.springmvc.common.result.JsonResult;
 
 /**
