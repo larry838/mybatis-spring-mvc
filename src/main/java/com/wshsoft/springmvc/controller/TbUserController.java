@@ -1,6 +1,7 @@
 package com.wshsoft.springmvc.controller;
 
 import com.wshsoft.mybatis.mapper.EntityWrapper;
+import com.wshsoft.springmvc.common.annotations.Log;
 import com.wshsoft.springmvc.model.system.TbUser;
 import com.wshsoft.springmvc.service.system.ITbUserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -33,6 +34,7 @@ public class TbUserController extends BaseController {
     }
 
     @RequestMapping("/preSave")
+    @Log("保存")
     public ModelAndView preSave(ModelAndView modelAndView, @RequestParam(value = "id", required = false) Long id) {
         modelAndView.setViewName("save");
         if (id != null) {
@@ -44,6 +46,8 @@ public class TbUserController extends BaseController {
     @ResponseBody
     @RequestMapping("save")
     public Object save(TbUser user) {
+    	String yy = null;
+    	yy.toString();
         if (user.getId() == null) {
             return iTbUserService.insert(user) ? renderSuccess("添加成功") : renderError("添加失败");
         } else {
@@ -53,6 +57,7 @@ public class TbUserController extends BaseController {
 
     @ResponseBody
     @RequestMapping("/delete")
+    @Log("删除")
     public Object delete(@RequestParam(value = "id", required = false) Long id) {
         return iTbUserService.deleteById(id) ? renderSuccess("删除成功") : renderError("删除失败");
     }
