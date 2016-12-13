@@ -314,3 +314,24 @@ INSERT INTO `user` VALUES ('user_96', 'user_10960', 'User No. 10960', '10061', '
 INSERT INTO `user` VALUES ('user_97', 'user_10150', 'User No. 10150', '6111', '2', '6', '1988-12-04 21:55:15', '872754157', '1282012776811', '1997-01-25', '1992-05-26 03:02:56');
 INSERT INTO `user` VALUES ('user_98', 'user_10768', 'User No. 10768', '11082', '1', '3', '2003-09-13 13:15:07', '500707336', '651583390195', '1983-03-25', '2009-10-17 06:18:38');
 INSERT INTO `user` VALUES ('user_99', 'user_10890', 'User No. 10890', '9370', '1', '8', '1991-07-15 08:32:16', '1246245294', '625423667894', '1986-01-12', '1985-08-08 07:24:05');
+
+DROP TABLE IF EXISTS `sys_log`;
+
+CREATE TABLE `sys_log` (
+  `id` bigint(16) unsigned NOT NULL AUTO_INCREMENT COMMENT '日志id',
+  `user_id` bigint(16) DEFAULT NULL COMMENT '用户Id',
+  `login_name` varchar(64) DEFAULT NULL COMMENT '登录帐号',
+  `type` tinyint(4) DEFAULT NULL COMMENT '日志类型 0:操作,1:异常',
+  `remote_addr` varchar(32) DEFAULT NULL COMMENT '操作IP地址',
+  `request_uri` varchar(255) DEFAULT NULL COMMENT '请求URI',
+  `user_agent` varchar(255) DEFAULT NULL COMMENT '请求客户端',
+  `params` text COMMENT '日志内容',
+  `method` varchar(16) DEFAULT NULL COMMENT '操作方式',
+  `exception` longtext COMMENT '异常信息',
+  `create_date` timestamp NULL DEFAULT NULL COMMENT '创建时间',
+  `operation` varchar(64) DEFAULT NULL COMMENT '操作方式',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=807086283590123521 DEFAULT CHARSET=utf8;
+
+
+insert  into `sys_log`(`id`,`user_id`,`login_name`,`type`,`remote_addr`,`request_uri`,`user_agent`,`params`,`method`,`exception`,`create_date`,`operation`) values (807068083708170240,NULL,NULL,0,'10.10.11.126','/demo/preSave','Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/54.0.2840.99 Safari/537.36','[类名]:com.wshsoft.springmvc.controller.TbUserController,[方法]:preSave,[参数]:id=784972358981328903&','GET',NULL,'2016-12-09 11:43:17','保存'),(807068576987680768,NULL,NULL,1,'10.10.11.126','/demo/save','Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/54.0.2840.99 Safari/537.36','[类名]:com.wshsoft.springmvc.controller.TbUserController,[方法]:save,[参数]:[参数1，类型:TbUser，值:com.wshsoft.springmvc.model.system.TbUser@17dc6aa]','POST',NULL,'2016-12-09 11:45:18','异常'),(807069379785854976,NULL,NULL,1,'10.10.11.126','/demo/save','Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/54.0.2840.99 Safari/537.36','[类名]:com.wshsoft.springmvc.controller.TbUserController,[方法]:save,[参数]:[参数1，类型:TbUser，值:com.wshsoft.springmvc.model.system.TbUser@6e618]','POST',NULL,'2016-12-09 11:47:36','异常'),(807072503044947968,NULL,NULL,0,'10.10.11.126','/demo/preSave','Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/54.0.2840.99 Safari/537.36','[类名]:com.wshsoft.springmvc.controller.TbUserController,[方法]:preSave,[参数]:id=784972358981328903&','GET',NULL,'2016-12-09 12:00:54','保存'),(807086281048375296,NULL,NULL,1,'10.10.11.126','/demo/save','Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/54.0.2840.99 Safari/537.36','[类名]:com.wshsoft.springmvc.controller.TbUserController,[方法]:save,[参数]:[参数1，类型:TbUser，值:com.wshsoft.springmvc.model.system.TbUser@f2579b]','POST','java.lang.NullPointerException','2016-12-09 12:55:39','异常'),(807086281933373440,NULL,NULL,1,'10.10.11.126','/demo/save','Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/54.0.2840.99 Safari/537.36','[类名]:com.wshsoft.springmvc.controller.TbUserController,[方法]:save,[参数]:[参数1，类型:TbUser，值:com.wshsoft.springmvc.model.system.TbUser@10fa20c]','POST','java.lang.NullPointerException','2016-12-09 12:55:39','异常'),(807086282801594368,NULL,NULL,1,'10.10.11.126','/demo/save','Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/54.0.2840.99 Safari/537.36','[类名]:com.wshsoft.springmvc.controller.TbUserController,[方法]:save,[参数]:[参数1，类型:TbUser，值:com.wshsoft.springmvc.model.system.TbUser@150db7d]','POST','java.lang.NullPointerException','2016-12-09 12:55:39','异常'),(807086283590123520,NULL,NULL,0,'10.10.11.126','/demo/preSave','Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/54.0.2840.99 Safari/537.36','[类名]:com.wshsoft.springmvc.controller.TbUserController,[方法]:preSave,[参数]:id=784972358981328903&','GET',NULL,'2016-12-09 12:55:40','保存');
