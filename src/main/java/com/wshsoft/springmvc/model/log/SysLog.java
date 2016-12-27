@@ -1,11 +1,11 @@
 package com.wshsoft.springmvc.model.log;
 
+import com.wshsoft.mybatis.activerecord.Model;
+import com.wshsoft.mybatis.annotations.TableId;
+import com.wshsoft.mybatis.annotations.TableField;
+import com.wshsoft.mybatis.annotations.TableName;
 import java.io.Serializable;
 import java.util.Date;
-
-import com.wshsoft.mybatis.annotations.TableField;
-import com.wshsoft.mybatis.annotations.TableId;
-import com.wshsoft.mybatis.annotations.TableName;
 
 /**
  * <p>
@@ -13,10 +13,10 @@ import com.wshsoft.mybatis.annotations.TableName;
  * </p>
  *
  * @author Carry xie
- * @since 2016-12-09
+ * @since 2016-12-27
  */
 @TableName("sys_log")
-public class SysLog implements Serializable {
+public class SysLog extends Model<SysLog> {
 
     private static final long serialVersionUID = 1L;
 
@@ -25,68 +25,56 @@ public class SysLog implements Serializable {
 	 */
 	@TableId
 	private Long id;
-
 	/**
 	 * 用户Id
 	 */
 	@TableField(value="user_id")
 	private Long userId;
-
 	/**
 	 * 登录帐号
 	 */
 	@TableField(value="login_name")
 	private String loginName;
-
 	/**
 	 * 日志类型 0:操作,1:异常
 	 */
 	private Integer type;
-
 	/**
 	 * 操作IP地址
 	 */
 	@TableField(value="remote_addr")
 	private String remoteAddr;
-
 	/**
 	 * 请求URI
 	 */
 	@TableField(value="request_uri")
 	private String requestUri;
-
 	/**
 	 * 请求客户端
 	 */
 	@TableField(value="user_agent")
 	private String userAgent;
-
 	/**
 	 * 日志内容
 	 */
 	private String params;
-
 	/**
 	 * 操作方式
 	 */
 	private String method;
-
 	/**
 	 * 异常信息
 	 */
 	private String exception;
-
 	/**
 	 * 创建时间
 	 */
 	@TableField(value="create_date")
 	private Date createDate;
-
 	/**
 	 * 操作方式
 	 */
 	private String operation;
-
 
 
 	public Long getId() {
@@ -183,6 +171,11 @@ public class SysLog implements Serializable {
 
 	public void setOperation(String operation) {
 		this.operation = operation;
+	}
+
+	@Override
+	protected Serializable pkVal() {
+		return this.id;
 	}
 
 }

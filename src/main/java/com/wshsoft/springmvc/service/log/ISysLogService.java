@@ -1,7 +1,7 @@
 package com.wshsoft.springmvc.service.log;
 
 import com.wshsoft.springmvc.model.log.SysLog;
-import com.wshsoft.framework.service.IService;
+import com.wshsoft.mybatis.service.IService;
 
 /**
  * <p>

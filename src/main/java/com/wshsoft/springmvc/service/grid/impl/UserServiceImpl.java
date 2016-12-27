@@ -2,10 +2,11 @@ package com.wshsoft.springmvc.service.grid.impl;
 
 import org.springframework.stereotype.Service;
 
+import com.wshsoft.mybatis.service.impl.ServiceImpl;
 import com.wshsoft.springmvc.mapper.grid.UserMapper;
 import com.wshsoft.springmvc.model.grid.User;
 import com.wshsoft.springmvc.service.grid.IUserService;
-import com.wshsoft.framework.service.impl.ServiceImpl;
+
 
 /**
  *
@@ -14,6 +15,5 @@ import com.wshsoft.framework.service.impl.ServiceImpl;
  */
 @Service
 public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements IUserService {
-
 
 }

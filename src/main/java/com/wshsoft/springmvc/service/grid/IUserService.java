@@ -1,7 +1,8 @@
 package com.wshsoft.springmvc.service.grid;
 
+import com.wshsoft.mybatis.service.IService;
 import com.wshsoft.springmvc.model.grid.User;
-import com.wshsoft.framework.service.IService;
+
 
 /**
  *
@@ -9,6 +10,7 @@ import com.wshsoft.framework.service.IService;
  *
  */
 public interface IUserService extends IService<User> {
+
 
 
 }

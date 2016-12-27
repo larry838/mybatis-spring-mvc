@@ -1,7 +1,7 @@
 package com.wshsoft.springmvc.service.system;
 
 import com.wshsoft.springmvc.model.system.TbUser;
-import com.wshsoft.framework.service.IService;
+import com.wshsoft.mybatis.service.IService;
 
 /**
  *

@@ -5,7 +5,7 @@ import org.springframework.stereotype.Service;
 import com.wshsoft.springmvc.mapper.system.TbUserMapper;
 import com.wshsoft.springmvc.model.system.TbUser;
 import com.wshsoft.springmvc.service.system.ITbUserService;
-import com.wshsoft.framework.service.impl.ServiceImpl;
+import com.wshsoft.mybatis.service.impl.ServiceImpl;
 
 /**
  *

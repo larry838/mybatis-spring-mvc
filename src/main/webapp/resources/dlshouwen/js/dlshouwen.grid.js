@@ -114,8 +114,12 @@
 						gridReflectionObj.constructGridToolBar();
 						//设置初始分页属性：每页显示数量、开始记录、当前页号
 						gridReflectionObj.pager.pageSize = gridReflectionObj.option.pageSize;
-						gridReflectionObj.pager.startRecord = 0;
-						gridReflectionObj.pager.nowPage = 1;
+						if(gridReflectionObj.pager.nowPage != 1){
+							gridReflectionObj.pager.startRecord=gridReflectionObj.pager.pageSize*gridReflectionObj.pager.nowPage;
+						}else{
+						    gridReflectionObj.pager.startRecord = 0;
+						    gridReflectionObj.pager.nowPage = 1;
+					    }
 						//如果不是ajax加载，则处理所有数据
 						if(!gridReflectionObj.option.ajaxLoad){
 							gridReflectionObj.hideProcessBar(function(){

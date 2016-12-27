@@ -46,8 +46,6 @@ public class TbUserController extends BaseController {
     @ResponseBody
     @RequestMapping("save")
     public Object save(TbUser user) {
-    	String yy = null;
-    	yy.toString();
         if (user.getId() == null) {
             return iTbUserService.insert(user) ? renderSuccess("添加成功") : renderError("添加失败");
         } else {

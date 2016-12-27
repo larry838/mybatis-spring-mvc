@@ -1,73 +1,89 @@
 package com.wshsoft.springmvc.model.grid;
 
+import com.wshsoft.mybatis.activerecord.Model;
+import com.wshsoft.mybatis.annotations.TableId;
+import com.wshsoft.mybatis.annotations.TableField;
+import com.wshsoft.mybatis.annotations.TableName;
 import java.io.Serializable;
 import java.util.Date;
 
-
-import com.wshsoft.mybatis.annotations.TableField;
-import com.wshsoft.mybatis.annotations.TableId;
-
 /**
+ * <p>
+ * User
+ * </p>
  *
- * TbUser
- *
+ * @author Carry xie
+ * @since 2016-12-27
  */
-public class User implements Serializable {
+@TableName("user")
+public class User extends Model<User> {
 
-	@TableField(exist = false)
-	private static final long serialVersionUID = 1L;
+    private static final long serialVersionUID = 1L;
 
-	/** TbUser Id */
-	@TableId(value = "user_id")
-	private String userId;
+	/**
+	 * User Id
+	 */
+	@TableId(value="user_id")
 
-	/** TbUser Code */
-	@TableField(value = "user_code")
+	private Long userId;
+	/**
+	 * User Code
+	 */
+	@TableField(value="user_code")
 	private String userCode;
-
-	/** TbUser Name */
-	@TableField(value = "user_name")
+	/**
+	 * User Name
+	 */
+	@TableField(value="user_name")
 	private String userName;
-
-	/** Salary */
+	/**
+	 * Salary
+	 */
 	private Double salary;
-
-	/** Sex */
+	/**
+	 * Sex
+	 */
 	private String sex;
-
-	/** Degree */
+	/**
+	 * Degree
+	 */
 	private String degree;
-
-	/** Time */
+	/**
+	 * Time
+	 */
 	private Date time;
-
-	/** Time Stamp(s) */
-	@TableField(value = "time_stamp_s")
+	/**
+	 * Time Stamp(s)
+	 */
+	@TableField(value="time_stamp_s")
 	private Integer timeStampS;
-
-	/** Time Stamp(ms) */
-	@TableField(value = "time_stamp_ms")
+	/**
+	 * Time Stamp(ms)
+	 */
+	@TableField(value="time_stamp_ms")
 	private Double timeStampMs;
-
-	/** Date String */
-	@TableField(value = "string_date")
+	/**
+	 * Date String
+	 */
+	@TableField(value="string_date")
 	private String stringDate;
-
-	/** Time String */
-	@TableField(value = "string_time")
+	/**
+	 * Time String
+	 */
+	@TableField(value="string_time")
 	private String stringTime;
 
 
-	public String getUserId() {
-		return this.userId;
+	public Long getUserId() {
+		return userId;
 	}
 
-	public void setUserId(String userId) {
+	public void setUserId(Long userId) {
 		this.userId = userId;
 	}
 
 	public String getUserCode() {
-		return this.userCode;
+		return userCode;
 	}
 
 	public void setUserCode(String userCode) {
@@ -75,7 +91,7 @@ public class User implements Serializable {
 	}
 
 	public String getUserName() {
-		return this.userName;
+		return userName;
 	}
 
 	public void setUserName(String userName) {
@@ -83,7 +99,7 @@ public class User implements Serializable {
 	}
 
 	public Double getSalary() {
-		return this.salary;
+		return salary;
 	}
 
 	public void setSalary(Double salary) {
@@ -91,7 +107,7 @@ public class User implements Serializable {
 	}
 
 	public String getSex() {
-		return this.sex;
+		return sex;
 	}
 
 	public void setSex(String sex) {
@@ -99,7 +115,7 @@ public class User implements Serializable {
 	}
 
 	public String getDegree() {
-		return this.degree;
+		return degree;
 	}
 
 	public void setDegree(String degree) {
@@ -107,7 +123,7 @@ public class User implements Serializable {
 	}
 
 	public Date getTime() {
-		return this.time;
+		return time;
 	}
 
 	public void setTime(Date time) {
@@ -115,7 +131,7 @@ public class User implements Serializable {
 	}
 
 	public Integer getTimeStampS() {
-		return this.timeStampS;
+		return timeStampS;
 	}
 
 	public void setTimeStampS(Integer timeStampS) {
@@ -123,7 +139,7 @@ public class User implements Serializable {
 	}
 
 	public Double getTimeStampMs() {
-		return this.timeStampMs;
+		return timeStampMs;
 	}
 
 	public void setTimeStampMs(Double timeStampMs) {
@@ -131,7 +147,7 @@ public class User implements Serializable {
 	}
 
 	public String getStringDate() {
-		return this.stringDate;
+		return stringDate;
 	}
 
 	public void setStringDate(String stringDate) {
@@ -139,11 +155,16 @@ public class User implements Serializable {
 	}
 
 	public String getStringTime() {
-		return this.stringTime;
+		return stringTime;
 	}
 
 	public void setStringTime(String stringTime) {
 		this.stringTime = stringTime;
+	}
+
+	@Override
+	protected Serializable pkVal() {
+		return this.userId;
 	}
 
 }
