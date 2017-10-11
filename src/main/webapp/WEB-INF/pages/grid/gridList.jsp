@@ -289,8 +289,7 @@
 	</div>
 	<div class="footer">
 		<div class="container copyright">
-			<a href="#">wsh软件公司</a>旗下产品 &nbsp;&nbsp; wshsoft.com &nbsp;&nbsp; <a
-				href="javascript:;">辽ICP备14014868号</a> &nbsp;&nbsp;
+			<a href="#">wsh软件公司</a>旗下产品 &nbsp;&nbsp; wshsoft.com &nbsp;&nbsp;  &nbsp;&nbsp;
 		</div>
 	</div>
 	<div id="back-to-top" class="back-to-top" title="回到顶部">
