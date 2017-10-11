@@ -4,9 +4,15 @@ import com.wshsoft.mybatis.mapper.EntityWrapper;
 import com.wshsoft.springmvc.common.annotations.Log;
 import com.wshsoft.springmvc.model.system.TbUser;
 import com.wshsoft.springmvc.service.system.ITbUserService;
+
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
@@ -59,4 +65,19 @@ public class TbUserController extends BaseController {
     public Object delete(@RequestParam(value = "id", required = false) Long id) {
         return iTbUserService.deleteById(id) ? renderSuccess("删除成功") : renderError("删除失败");
     }
+    
+	@RequestMapping(value = "/getUsers",method = RequestMethod.GET)
+	@ResponseBody
+	public List<TbUser> getUsers(){
+		List<TbUser> userVos=new ArrayList<>();
+		for (int i=1;i<=10;i++){
+			TbUser userVo=new TbUser();
+			userVo.setId(2017072012504723359L+i);
+			userVo.setName("测试用户"+i);
+			userVo.setBirthday(new Date());
+			userVos.add(userVo);
+		}
+		return userVos;
+	}
+    
 }
